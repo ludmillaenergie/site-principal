@@ -111,212 +111,13 @@
     margin-bottom:8px;
   }
 
-  .oracle-desc{
-    font-size:14px;
-    line-height:1.6;
-    color: var(--ivoire-dim);
-    opacity:0.9;
-  }
-
-  .oracle-fleche{
-    display:inline-block;
-    margin-top:12px;
-    font-size:10.5px;
-    letter-spacing:2px;
-    text-transform:uppercase;
+  .oracle-accroche{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:15px;
     color: var(--or);
     opacity:0.85;
-  }
-
-  .univers{
-    text-align:center;
-    padding-top: 40px;
-    border-top: 1px solid rgba(200,169,110,0.18);
-  }
-
-  .univers p{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-size:16px;
-    color: var(--ivoire-dim);
-    opacity:0.8;
-    margin-bottom: 18px;
-  }
-
-  .lien-univers{
-    font-size:11px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color: var(--ivoire-dim);
-    text-decoration:none;
-    border-bottom: 1px dotted rgba(200,169,110,0.4);
-    padding-bottom:2px;
-    transition: all .3s ease;
-  }
-  .lien-univers:hover{ color: var(--or-clair); border-color: var(--or-clair); }
-
-  footer{
-    text-align:center;
-    margin-top: 70px;
-    font-size:10px;
-    letter-spacing:1px;
-    color: var(--ivoire-dim);
-    opacity:0.4;
-  }
-
-  @media (max-width: 480px){
-    .signature{ font-size:42px; }
-    .intro{ font-size:17px; }
-  }
-</style>
-</head>
-<body>
-  <div class="conteneur">
-    <header>
-      <div class="signature">Ludmilla Énergie</div>
-      <p class="intro">Un univers d'oracles et d'accompagnement, né d'une méthodologie personnelle : la Traversée. Ici, chaque carte, chaque mot, invite à se retrouver.</p>
-      <a class="lien-energie-jour" href="https://ludmillaenergie.github.io/energie-du-jour/">Découvrir l'énergie du jour</a>
-    </header>
-
-    <div class="section-titre">Les Oracles</div>
-    <div class="oracles">
-      <a class="oracle-carte" href="oracle-traversee.html">
-        <div class="oracle-nom">Oracle de Traversée</div>
-        <div class="oracle-desc">34 cartes pour traverser une blessure et rencontrer la guérison qui lui répond. Le premier pas de la méthodologie de la Traversée.</div>
-        <div class="oracle-fleche">Découvrir →</div>
-      </a>
-      <a class="oracle-carte" href="oracle-evidences.html">
-        <div class="oracle-nom">Oracle des Évidences</div>
-        <div class="oracle-desc">34 cartes sur les liens de l'âme, entre mémoire lunaire et élan solaire. Pour éclairer ce qui relie vraiment.</div>
-        <div class="oracle-fleche">Découvrir →</div>
-      </a>
-      <a class="oracle-carte" href="oracle-hemera.html">
-        <div class="oracle-nom">Oracle d'Héméra</div>
-        <div class="oracle-desc">36 cartes prédictives sur l'amour, entre Aube, Zénith, Crépuscule et Nuit. Trois voix pour éclairer ce qui vient.</div>
-        <div class="oracle-fleche">Découvrir →</div>
-      </a>
-    </div>
-
-    <div class="univers">
-      <p>Accompagnements, écrits et bien plus t'attendent sur l'univers complet.</p>
-      <a class="lien-univers" href="https://ludmillaenergie.wixsite.com/ludmilla-energie-1">Découvrir tout l'univers Ludmilla Énergie</a>
-    </div>
-
-    <footer>Ludmilla Énergie</footer>
-  </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ludmilla Énergie</title>
-<meta name="description" content="Oracles, accompagnement et univers de la Traversée par Ludmilla Énergie." />
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
-
-  :root{
-    --noir: #09070a;
-    --noir-2: #120e13;
-    --or: #c8a96e;
-    --or-clair: #e2caa0;
-    --ivoire: #f3ead9;
-    --ivoire-dim: #cfc3ab;
-  }
-
-  *{ box-sizing:border-box; }
-
-  html, body{
-    margin:0; padding:0;
-    background: radial-gradient(120% 60% at 50% 0%, rgba(200,169,110,0.10), transparent 60%),
-                linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
-    font-family:'Raleway', sans-serif;
-    color: var(--ivoire);
-  }
-
-  .conteneur{
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 70px 24px 90px;
-  }
-
-  header{
-    text-align:center;
-    margin-bottom: 60px;
-  }
-
-  .signature{
-    font-family:'Allura', cursive;
-    font-size:52px;
-    color: var(--or);
-    margin-bottom: 18px;
-  }
-
-  .intro{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-size:19px;
-    line-height:1.7;
-    color: var(--ivoire);
-    opacity:0.88;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .lien-energie-jour{
-    display:inline-block;
-    margin-top: 30px;
-    font-size:11.5px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color: var(--noir);
-    background: var(--or);
-    padding:14px 28px;
-    border-radius:999px;
-    text-decoration:none;
-    transition: all .3s ease;
-  }
-  .lien-energie-jour:hover{ background: var(--or-clair); box-shadow: 0 0 20px rgba(200,169,110,0.3); }
-
-  .section-titre{
-    text-align:center;
-    font-size:11px;
-    letter-spacing:3.5px;
-    text-transform:uppercase;
-    color: var(--ivoire-dim);
-    opacity:0.6;
-    margin: 0 0 30px;
-  }
-
-  .oracles{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    margin-bottom: 70px;
-  }
-
-  .oracle-carte{
-    display:block;
-    text-decoration:none;
-    border:1px solid rgba(200,169,110,0.3);
-    border-radius:16px;
-    padding: 28px 26px;
-    background: linear-gradient(180deg, rgba(200,169,110,0.04), transparent 60%);
-    transition: all .3s ease;
-  }
-  .oracle-carte:hover{
-    border-color: rgba(200,169,110,0.6);
-    background: linear-gradient(180deg, rgba(200,169,110,0.08), transparent 60%);
-  }
-
-  .oracle-nom{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:26px;
-    color: var(--or-clair);
-    margin-bottom:8px;
+    margin-bottom:10px;
   }
 
   .oracle-desc{
@@ -401,6 +202,16 @@
       <a class="oracle-carte" href="https://ludmillaenergie.github.io/oracle-hemera/">
         <div class="oracle-nom">Oracle d'Héméra</div>
         <div class="oracle-desc">36 cartes prédictives sur l'amour, entre Aube, Zénith, Crépuscule et Nuit. Trois voix pour éclairer ce qui vient.</div>
+        <div class="oracle-fleche">Découvrir →</div>
+      </a>
+    </div>
+
+    <div class="section-titre">L'Accompagnement</div>
+    <div class="oracles">
+      <a class="oracle-carte" href="https://ludmillaenergie.github.io/le-repere-partage/">
+        <div class="oracle-nom">Le Repère</div>
+        <div class="oracle-accroche">Chaque jour, une lecture qui part de toi.</div>
+        <div class="oracle-desc">Le Repère croise ton thème de naissance, ton Design Humain, tes Gene Keys et ta numérologie pour t'aider à comprendre ce que tu vis et avancer dans la direction qui est juste pour toi.</div>
         <div class="oracle-fleche">Découvrir →</div>
       </a>
     </div>
