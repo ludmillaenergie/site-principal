@@ -12,24 +12,16 @@
 
 <!--
   TODO avant mise en ligne :
-  1. Polices : la charte dit "Cormorant Garamond, Raleway, Allura, sourcées via Google Fonts GitHub"
-     (donc auto-hébergées, pas un lien Google Fonts direct). Je n'ai pas pu récupérer le chemin exact
-     utilisé sur le reste du site (ex. /assets/fonts/...) — j'ai mis un lien Google Fonts classique en
-     attendant, à remplacer par les mêmes fichiers que sur les autres pages.
-  2. Couleurs : j'ai repris la palette documentée (#c8a96e or, fond ivoire). À réaligner sur la vraie
+  1. Couleurs : j'ai repris la palette documentée (#c8a96e or, fond ivoire). À réaligner sur la vraie
      feuille de style /assets/css/style.css si les teintes exactes diffèrent.
-  3. Fichier audio : src="/assets/audio/je-reviens.mp3" est un chemin provisoire — à remplacer par le
-     vrai fichier une fois envoyé.
-  4. Formulaire Brevo : la structure ci-dessous est un squelette Brevo standard. Remplacer action,
+  2. Formulaire Brevo : la structure ci-dessous est un squelette Brevo standard. Remplacer action,
      les champs cachés (LISTID, locale) et le script par le vrai code d'inscription (Brevo > Formulaires
      > Partager le formulaire), pour rester sur la même liste que le reste du site.
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Raleway:wght@300;400;500&family=Allura&display=swap" rel="stylesheet">
-
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
+
   :root {
     --or: #c8a96e;
     --or-fonce: #a8875099;
