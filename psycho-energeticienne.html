@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Psycho-énergéticienne — Accompagnement à distance | Ludmilla Énergie</title>
+<meta name="description" content="Ludmilla Hoï-Loung, psycho-énergéticienne (Ludmilla Énergie), accompagne à distance les personnes en changement, perte de repères ou épuisement émotionnel. Séances individuelles, Le Passage, Le Repère, oracles." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
+
+  :root{
+    --noir: #09070a; --noir-2: #120e13;
+    --or: #c8a96e; --or-clair: #e2caa0;
+    --ivoire: #f3ead9; --ivoire-dim: #cfc3ab;
+  }
+  *{ box-sizing:border-box; }
+  html, body{
+    margin:0; padding:0;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(200,169,110,0.10), transparent 60%),
+                linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
+    font-family:'Raleway', sans-serif; color: var(--ivoire);
+  }
+  .conteneur{ max-width: 680px; margin:0 auto; padding: 60px 24px 90px; }
+  .retour{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim); text-decoration:none; opacity:0.6; }
+  .retour:hover{ opacity:1; color: var(--or-clair); }
+
+  header{ text-align:center; margin: 50px 0 34px; }
+  .eyebrow{ font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color: var(--or); opacity:0.85; margin-bottom:14px; }
+  h1{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:44px; color: var(--or-clair); margin:0 0 18px; line-height:1.15; }
+  .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--ivoire); opacity:0.9; max-width:520px; margin:0 auto 12px; line-height:1.65; }
+  .sous-tagline{ font-size:14px; color: var(--ivoire-dim); opacity:0.85; max-width:460px; margin:0 auto; line-height:1.6; }
+
+  .cta-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:16px; margin-top: 30px; }
+  .btn-contact{
+    display:inline-block; font-size:12.5px; letter-spacing:2.5px; text-transform:uppercase;
+    color: var(--noir); background: var(--or); padding:15px 34px; border-radius:999px;
+    text-decoration:none; transition: all .3s ease;
+  }
+  .btn-contact:hover{ background: var(--or-clair); box-shadow: 0 0 24px rgba(200,169,110,0.35); }
+  .btn-secondaire{
+    font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim);
+    text-decoration:none; border-bottom: 1px dotted rgba(200,169,110,0.4); padding-bottom:2px;
+    transition: all .3s ease;
+  }
+  .btn-secondaire:hover{ color: var(--or-clair); border-color: var(--or-clair); }
+
+  .cadre{
+    border:1px solid rgba(200,169,110,0.35); border-radius:18px; padding: 36px 30px;
+    background: linear-gradient(180deg, rgba(200,169,110,0.05), transparent 60%);
+    margin: 40px 0;
+  }
+  .cadre h2{
+    font-family:'Raleway', sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin:0 0 18px;
+  }
+  .cadre p{ font-size:15px; line-height:1.75; color: var(--ivoire); opacity:0.88; margin:0 0 14px; }
+  .cadre p:last-child{ margin-bottom:0; }
+  .cadre a{ color: var(--or-clair); }
+
+  .section-titre{
+    text-align:center; font-size:11px; letter-spacing:3.5px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin: 60px 0 26px;
+  }
+  .offres{ display:flex; flex-direction:column; gap:16px; margin-bottom: 20px; }
+  .offre-carte{
+    display:block; text-decoration:none; border:1px solid rgba(200,169,110,0.3); border-radius:16px;
+    padding: 24px 24px; background: linear-gradient(180deg, rgba(200,169,110,0.04), transparent 60%);
+    transition: all .3s ease;
+  }
+  .offre-carte:hover{ border-color: rgba(200,169,110,0.6); background: linear-gradient(180deg, rgba(200,169,110,0.08), transparent 60%); }
+  .offre-nom{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:22px; color: var(--or-clair); margin-bottom:6px; }
+  .offre-desc{ font-size:14px; line-height:1.6; color: var(--ivoire-dim); opacity:0.9; }
+
+  .faq-item{ margin-bottom: 26px; }
+  .faq-item:last-child{ margin-bottom:0; }
+  .faq-q{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:19px; color: var(--or-clair); margin:0 0 8px; }
+  .faq-a{ font-size:15px; line-height:1.7; color: var(--ivoire); opacity:0.88; margin:0; }
+
+  footer{ text-align:center; margin-top: 80px; font-family:'Allura', cursive; font-size:30px; color: var(--or); opacity:0.85; }
+
+  @media (max-width:480px){ h1{ font-size:34px; } .tagline{ font-size:17px; } }
+</style>
+  <meta property="og:title" content="Psycho-énergéticienne — Accompagnement à distance | Ludmilla Énergie" />
+  <meta property="og:description" content="Ludmilla Hoï-Loung, psycho-énergéticienne (Ludmilla Énergie), accompagne à distance les personnes en changement, perte de repères ou épuisement émotionnel." />
+  <meta property="og:url" content="https://ludmillaenergie.fr/psycho-energeticienne.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://ludmillaenergie.fr/psycho-energeticienne.html#personne",
+        "name": "Ludmilla Hoï-Loung",
+        "alternateName": "Ludmilla Énergie",
+        "jobTitle": "Psycho-énergéticienne",
+        "description": "Psycho-énergéticienne indépendante depuis 2011, accompagnement à distance selon une méthodologie personnelle, la Traversée.",
+        "url": "https://ludmillaenergie.fr/psycho-energeticienne.html",
+        "email": "mailto:ludmillaenergie@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toulouse",
+          "addressCountry": "FR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/ludmilla_energie",
+          "https://www.facebook.com/share/197pPK5ESm/",
+          "https://www.youtube.com/@LudmillaEnergie",
+          "https://www.tiktok.com/@ludmillaenergie"
+        ]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://ludmillaenergie.fr/psycho-energeticienne.html#service",
+        "name": "Ludmilla Énergie",
+        "description": "Accompagnement psycho-énergétique à distance pour les personnes en changement, perte de repères, épuisement émotionnel ou remise en question.",
+        "provider": { "@id": "https://ludmillaenergie.fr/psycho-energeticienne.html#personne" },
+        "areaServed": "FR",
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://ludmillaenergie.fr/psycho-energeticienne.html",
+          "availableLanguage": "fr"
+        },
+        "url": "https://ludmillaenergie.fr/psycho-energeticienne.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce qu'une psycho-énergéticienne ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "C'est une personne qui accompagne par l'écoute, l'intuition et le travail énergétique. Ce titre n'étant pas réglementé, chaque praticien développe sa propre approche. La mienne s'appelle la Traversée."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment se déroule une séance ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La séance se déroule à distance, en visio ou en audio. Je pars de ce que la personne vit et de ce qu'elle amène ce jour-là. Il n'est pas nécessaire d'arriver avec une demande parfaitement formulée."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Faut-il croire à l'énergétique pour venir ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. Il suffit de sentir que quelque chose mérite d'être regardé autrement qu'on ne l'a déjà fait."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle différence avec un coaching ou une psychothérapie ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le coaching part généralement d'un objectif à atteindre. La psychothérapie accompagne la souffrance psychique dans un cadre thérapeutique spécifique. Mon travail part de ce que la personne vit, de ce qui se répète ou résiste, pour éclairer ce qui se joue derrière."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Peut-on commencer sans savoir ce qu'on cherche à traverser ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. C'est même la situation la plus fréquente."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="conteneur">
+    <a class="retour" href="index.html">← Retour à l'accueil</a>
+
+    <header>
+      <div class="eyebrow">Psycho-énergéticienne</div>
+      <h1>Accompagnement à distance</h1>
+      <p class="tagline">Ludmilla Hoï-Loung, connue sous le nom de Ludmilla Énergie, accompagne les personnes qui traversent un changement, une perte de repères, un épuisement émotionnel ou une période de remise en question.</p>
+      <p class="sous-tagline">Basée à Toulouse, elle travaille uniquement à distance, en visio, en audio et par écrit.</p>
+      <div class="cta-row">
+        <a class="btn-contact" href="mailto:ludmillaenergie@gmail.com">Prendre contact</a>
+        <a class="btn-secondaire" href="#accompagnements">Découvrir les accompagnements</a>
+      </div>
+    </header>
+
+    <div class="cadre">
+      <h2>Ce qu'elle accompagne</h2>
+      <p>Une période où les repères habituels ne tiennent plus. Une fatigue intérieure qui reste là, même quand on essaie de lever le pied. Une décision qu'on n'arrive pas à prendre. Le sentiment de tourner autour du même problème sans parvenir à comprendre ce qui se joue réellement.</p>
+      <p>Son travail ne consiste pas à motiver, à donner des solutions toutes faites ni à réparer les personnes. Elle vient éclairer ce qui se cache derrière ce que l'on croit être le problème.</p>
+    </div>
+
+    <div class="cadre">
+      <h2>Comment elle travaille</h2>
+      <p>Son approche réunit l'écoute, l'intuition et l'énergétique.</p>
+      <p>Indépendante depuis 2011, Ludmilla a développé sa propre méthodologie à partir de sa pratique : la Traversée.</p>
+    </div>
+
+    <div class="section-titre" id="accompagnements">Ce qu'elle propose</div>
+    <div class="offres">
+      <a class="offre-carte" href="mailto:ludmillaenergie@gmail.com">
+        <div class="offre-nom">Séances individuelles</div>
+        <div class="offre-desc">À distance, en visio ou en audio.</div>
+      </a>
+      <a class="offre-carte" href="https://ludmillaenergie.github.io/le-passage/">
+        <div class="offre-nom">Le Passage</div>
+        <div class="offre-desc">Un accompagnement mensuel par abonnement.</div>
+      </a>
+      <a class="offre-carte" href="https://ludmillaenergie.github.io/le-repere-partage/">
+        <div class="offre-nom">Le Repère</div>
+        <div class="offre-desc">Une lecture quotidienne personnalisée, à partir du thème natal, du Human Design, des Gene Keys et de la numérologie.</div>
+      </a>
+      <a class="offre-carte" href="oracle-traversee.html">
+        <div class="offre-nom">Oracle de Traversée</div>
+        <div class="offre-desc">34 cartes introspectives, 17 blessures et 17 guérisons.</div>
+      </a>
+      <a class="offre-carte" href="oracle-evidences.html">
+        <div class="offre-nom">Oracle des Évidences</div>
+        <div class="offre-desc">34 cartes sur les liens de l'âme.</div>
+      </a>
+      <a class="offre-carte" href="oracle-hemera.html">
+        <div class="offre-nom">Oracle d'Héméra</div>
+        <div class="offre-desc">36 cartes prédictives sur l'amour.</div>
+      </a>
+      <a class="offre-carte" href="https://ludmillaenergie.wixsite.com/ludmilla-energie-1">
+        <div class="offre-nom">Livres et manifestes</div>
+        <div class="offre-desc">Deux tomes et trois manifestes issus de sa pratique.</div>
+      </a>
+    </div>
+
+    <div class="cadre">
+      <h2>Comment me consulter</h2>
+      <p>Tout se passe à distance.</p>
+      <p>Pour un premier contact, vous pouvez m'écrire à : <a href="mailto:ludmillaenergie@gmail.com">ludmillaenergie@gmail.com</a></p>
+    </div>
+
+    <div class="cadre">
+      <h2>Ce que mon accompagnement ne remplace pas</h2>
+      <p>Psycho-énergéticienne n'est pas un titre réglementé de psychologue ou de psychothérapeute.</p>
+      <p>Mon accompagnement ne remplace pas un suivi médical ou psychothérapeutique lorsqu'il est nécessaire. Il peut intervenir en complément.</p>
+    </div>
+
+    <div class="cadre">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-item">
+        <p class="faq-q">Qu'est-ce qu'une psycho-énergéticienne ?</p>
+        <p class="faq-a">C'est une personne qui accompagne par l'écoute, l'intuition et le travail énergétique. Ce titre n'étant pas réglementé, chaque praticien développe sa propre approche. La mienne s'appelle la Traversée.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Comment se déroule une séance ?</p>
+        <p class="faq-a">La séance se déroule à distance, en visio ou en audio. Je pars de ce que la personne vit et de ce qu'elle amène ce jour-là. Il n'est pas nécessaire d'arriver avec une demande parfaitement formulée.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Faut-il croire à l'énergétique pour venir ?</p>
+        <p class="faq-a">Non. Il suffit de sentir que quelque chose mérite d'être regardé autrement qu'on ne l'a déjà fait.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Quelle différence avec un coaching ou une psychothérapie ?</p>
+        <p class="faq-a">Le coaching part généralement d'un objectif à atteindre. La psychothérapie accompagne la souffrance psychique dans un cadre thérapeutique spécifique. Mon travail part de ce que la personne vit, de ce qui se répète ou résiste, pour éclairer ce qui se joue derrière.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Peut-on commencer sans savoir ce qu'on cherche à traverser ?</p>
+        <p class="faq-a">Oui. C'est même la situation la plus fréquente.</p>
+      </div>
+    </div>
+
+    <footer>Ludmilla Énergie</footer>
+  </div>
+</body>
+</html>
