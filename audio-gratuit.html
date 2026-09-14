@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Un audio gratuit — Je Reviens | Ludmilla Énergie</title>
+<meta name="description" content="Un audio gratuit de la Bibliothèque de Traversée, pour revenir à soi, sans rien à décider tout de suite.">
+<meta property="og:title" content="Je Reviens — un audio gratuit | Ludmilla Énergie">
+<meta property="og:description" content="Un moment pour revenir à soi, sans rien à décider tout de suite.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ludmillaenergie.fr/audio-gratuit.html">
+
+<!--
+  TODO avant mise en ligne :
+  1. Polices : la charte dit "Cormorant Garamond, Raleway, Allura, sourcées via Google Fonts GitHub"
+     (donc auto-hébergées, pas un lien Google Fonts direct). Je n'ai pas pu récupérer le chemin exact
+     utilisé sur le reste du site (ex. /assets/fonts/...) — j'ai mis un lien Google Fonts classique en
+     attendant, à remplacer par les mêmes fichiers que sur les autres pages.
+  2. Couleurs : j'ai repris la palette documentée (#c8a96e or, fond ivoire). À réaligner sur la vraie
+     feuille de style /assets/css/style.css si les teintes exactes diffèrent.
+  3. Fichier audio : src="/assets/audio/je-reviens.mp3" est un chemin provisoire — à remplacer par le
+     vrai fichier une fois envoyé.
+  4. Formulaire Brevo : la structure ci-dessous est un squelette Brevo standard. Remplacer action,
+     les champs cachés (LISTID, locale) et le script par le vrai code d'inscription (Brevo > Formulaires
+     > Partager le formulaire), pour rester sur la même liste que le reste du site.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Raleway:wght@300;400;500&family=Allura&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --or: #c8a96e;
+    --or-fonce: #a8875099;
+    --ivoire: #faf6ee;
+    --ivoire-doux: #f3ecdd;
+    --texte: #3a3530;
+    --texte-doux: #6b6459;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ivoire);
+    color: var(--texte);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+    text-align: center;
+  }
+
+  .retour {
+    display: inline-block;
+    margin-bottom: 3rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--texte-doux);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .retour:hover { border-bottom-color: var(--or); }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2.4rem;
+    margin: 0 0 0.5rem;
+    color: var(--texte);
+  }
+
+  .signature {
+    font-family: 'Allura', cursive;
+    font-size: 1.6rem;
+    color: var(--or);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .intro {
+    font-size: 1.15rem;
+    color: var(--texte-doux);
+    max-width: 480px;
+    margin: 1.5rem auto 3rem;
+  }
+
+  .lecteur {
+    background: var(--ivoire-doux);
+    border: 1px solid var(--or-fonce);
+    border-radius: 14px;
+    padding: 2rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  audio {
+    width: 100%;
+    accent-color: var(--or);
+  }
+
+  .apres-ecoute {
+    font-size: 1rem;
+    color: var(--texte-doux);
+    margin-bottom: 2.5rem;
+  }
+
+  .inscription {
+    border-top: 1px solid var(--or-fonce);
+    padding-top: 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .inscription p {
+    font-size: 0.95rem;
+    color: var(--texte-doux);
+    margin-bottom: 1.3rem;
+  }
+
+  form.brevo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+
+  form.brevo input[type="text"],
+  form.brevo input[type="email"] {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--or-fonce);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--texte);
+    min-width: 180px;
+    flex: 1 1 180px;
+  }
+
+  form.brevo button {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 1.6rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--or);
+    color: #fff;
+    cursor: pointer;
+  }
+  form.brevo button:hover { background: #b8965a; }
+
+  .mentions {
+    font-size: 0.75rem;
+    color: var(--texte-doux);
+    margin-top: 1rem;
+  }
+
+  .ailleurs {
+    margin-top: 4rem;
+    font-size: 0.85rem;
+    color: var(--texte-doux);
+  }
+  .ailleurs a { color: var(--texte-doux); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="retour" href="/">← Retour à l'univers Ludmilla Énergie</a>
+
+  <h1>Je Reviens<span class="signature">un audio gratuit</span></h1>
+
+  <p class="intro">
+    Un moment pour revenir à soi, sans rien à décider tout de suite.
+    Cet audio fait partie de la Bibliothèque de Traversée. Il ne demande rien, juste d'écouter.
+  </p>
+
+  <div class="lecteur">
+    <audio controls preload="none" src="/assets/audio/je-reviens.mp3">
+      Le lecteur audio n'est pas pris en charge par ce navigateur.
+    </audio>
+  </div>
+
+  <p class="apres-ecoute">
+    Il y a d'autres textes et d'autres audios, pour d'autres moments.
+  </p>
+
+  <div class="inscription">
+    <p>Pour les recevoir, quand ils arrivent.</p>
+
+    <!-- Squelette Brevo — à remplacer par le vrai code (Brevo > Formulaires > Partager) -->
+    <form class="brevo" method="POST" action="https://TODO-lien-brevo-a-remplacer">
+      <input type="text" name="PRENOM" placeholder="Prénom" autocomplete="given-name">
+      <input type="email" name="EMAIL" placeholder="Adresse email" autocomplete="email" required>
+      <input type="hidden" name="locale" value="fr">
+      <input type="hidden" name="listIds" value="TODO">
+      <button type="submit">Recevoir</button>
+    </form>
+
+    <p class="mentions">Un email de temps en temps. Aucun engagement, aucune revente de données.</p>
+  </div>
+
+  <p class="ailleurs">
+    <a href="/">Découvrir le reste de l'univers Ludmilla Énergie</a>
+  </p>
+
+</div>
+</body>
+</html>
