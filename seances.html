@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revenir à Soi — Séances individuelles | Ludmilla Énergie</title>
+<meta name="description" content="6 semaines pour cesser de se contourner. Un accompagnement pour arrêter de tourner autour et revenir à ce que tu ressens vraiment. 6 séances individuelles, 333€.">
+<meta property="og:title" content="Revenir à Soi | Ludmilla Énergie">
+<meta property="og:description" content="Un accompagnement pour arrêter de tourner autour et revenir à ce que tu ressens vraiment.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ludmillaenergie.fr/seances.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
+
+  :root{
+    --noir: #09070a; --noir-2: #120e13;
+    --or: #c8a96e; --or-clair: #e2caa0;
+    --ivoire: #f3ead9; --ivoire-dim: #cfc3ab;
+  }
+  *{ box-sizing:border-box; }
+  html, body{
+    margin:0; padding:0;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(200,169,110,0.10), transparent 60%),
+                linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
+    font-family:'Raleway', sans-serif; color: var(--ivoire);
+  }
+  .conteneur{ max-width: 640px; margin:0 auto; padding: 60px 24px 90px; }
+  .retour{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim); text-decoration:none; opacity:0.6; }
+  .retour:hover{ opacity:1; color: var(--or-clair); }
+
+  header{ text-align:center; margin: 50px 0 30px; }
+  .eyebrow{ font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color: var(--or); opacity:0.85; margin-bottom:14px; }
+  h1{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:40px; color: var(--or-clair); margin:0 0 12px; line-height:1.15; }
+  .sous-titre{ font-size:12.5px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim); opacity:0.85; margin-bottom:22px; }
+  .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--ivoire); opacity:0.9; max-width:480px; margin:0 auto 28px; line-height:1.65; }
+  .prix-format{ font-size:12.5px; letter-spacing:1px; color: var(--ivoire-dim); opacity:0.8; margin-bottom: 26px; }
+
+  .btn-contact{
+    display:inline-block; font-size:12.5px; letter-spacing:2.5px; text-transform:uppercase;
+    color: var(--noir); background: var(--or); padding:16px 40px; border-radius:999px;
+    text-decoration:none; transition: all .3s ease;
+  }
+  .btn-contact:hover{ background: var(--or-clair); box-shadow: 0 0 24px rgba(200,169,110,0.35); }
+  .btn-secondaire{
+    display:inline-block; margin-top:16px; font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim);
+    text-decoration:none; border-bottom: 1px dotted rgba(200,169,110,0.4); padding-bottom:2px;
+    transition: all .3s ease;
+  }
+  .btn-secondaire:hover{ color: var(--or-clair); border-color: var(--or-clair); }
+
+  .cadre{
+    border:1px solid rgba(200,169,110,0.35); border-radius:18px; padding: 36px 30px;
+    background: linear-gradient(180deg, rgba(200,169,110,0.05), transparent 60%);
+    margin: 30px 0;
+  }
+  .cadre h2{
+    font-family:'Raleway', sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin:0 0 18px;
+  }
+  .cadre p{ font-size:15px; line-height:1.8; color: var(--ivoire); opacity:0.9; margin:0 0 16px; }
+  .cadre p:last-child{ margin-bottom:0; }
+
+  .etapes{ display:flex; flex-direction:column; gap:20px; }
+  .etape-num{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:18px; color: var(--or-clair); margin-bottom:4px; }
+  .etape-desc{ font-size:14.5px; line-height:1.65; color: var(--ivoire-dim); opacity:0.9; }
+
+  .pour-toi-si{ display:flex; flex-direction:column; gap:14px; }
+  .pour-toi-si div{ font-size:15px; line-height:1.7; color: var(--ivoire); opacity:0.9; padding-left: 20px; position:relative; }
+  .pour-toi-si div::before{ content:"—"; position:absolute; left:0; color: var(--or); opacity:0.7; }
+  .pas-pour-toi{ display:flex; flex-direction:column; gap:14px; margin-top:22px; }
+  .pas-pour-toi div{ font-size:15px; line-height:1.7; color: var(--ivoire-dim); opacity:0.75; padding-left: 20px; position:relative; }
+  .pas-pour-toi div::before{ content:"—"; position:absolute; left:0; color: var(--ivoire-dim); opacity:0.5; }
+
+  .cta-centre{ text-align:center; margin: 40px 0; }
+
+  .note{ text-align:center; font-size:13px; line-height:1.7; color: var(--ivoire-dim); opacity:0.75; margin-top: 40px; }
+  .note a{ color: var(--or-clair); text-decoration:none; border-bottom:1px dotted rgba(200,169,110,0.4); }
+  .note a:hover{ opacity:1; }
+
+  footer{ text-align:center; margin-top: 80px; font-family:'Allura', cursive; font-size:30px; color: var(--or); opacity:0.85; }
+
+  @media (max-width:480px){ h1{ font-size:30px; } .tagline{ font-size:17px; } }
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <a class="retour" href="psycho-energeticienne.html">← Retour</a>
+
+  <header>
+    <div class="eyebrow">Séances individuelles</div>
+    <h1>Revenir à Soi</h1>
+    <p class="sous-titre">6 semaines pour cesser de se contourner</p>
+    <p class="tagline">Un accompagnement pour arrêter de tourner autour<br>et revenir à ce que tu ressens vraiment.</p>
+    <p class="prix-format">6 séances individuelles · 333€</p>
+    <a class="btn-contact" href="https://buy.stripe.com/14A5kw0bbagLb081tscV20e">Je suis prêt(e)</a>
+  </header>
+
+  <div class="cadre">
+    <p>Tu as longtemps été là pour les autres.<br>À comprendre, soutenir, t'adapter... jusqu'à t'oublier.</p>
+    <p>Tu sais ce que tu ressens.<br>Mais tu continues à contourner.</p>
+    <p>Et aujourd'hui, tu le sens :<br>tu ne peux plus continuer comme ça.</p>
+  </div>
+
+  <div class="cadre">
+    <h2>Ce que c'est vraiment</h2>
+    <p>Revenir à soi, ce n'est pas se réparer. Ni appliquer une méthode de plus.</p>
+    <p>C'est un espace pour voir clairement. Voir ce que tu ressens vraiment. Voir ce que tu continues à accepter. Voir ce que tu évites encore.</p>
+    <p>Je ne t'apporte pas de réponses toutes faites. Je t'aide à voir ce qui est déjà là et que tu ne peux plus ignorer.</p>
+    <p>Rien n'est forcé.<br>Mais rien n'est évité.</p>
+  </div>
+
+  <div class="cadre">
+    <h2>Les 6 séances</h2>
+    <div class="etapes">
+      <div>
+        <div class="etape-num">01 · Mettre en lumière</div>
+        <div class="etape-desc">Voir clairement ce qui bloque réellement — pas ce que tu crois qui bloque.</div>
+      </div>
+      <div>
+        <div class="etape-num">02 · Identifier les mécanismes</div>
+        <div class="etape-desc">Nommer les schémas dans lesquels tu tournes, sans te juger.</div>
+      </div>
+      <div>
+        <div class="etape-num">03 · Voir ce que tu évites</div>
+        <div class="etape-desc">Ce que tu contournes intelligemment, sans t'en rendre compte.</div>
+      </div>
+      <div>
+        <div class="etape-num">04 · Ajuster la posture</div>
+        <div class="etape-desc">De manière simple et directe — sans te forcer, sans te trahir.</div>
+      </div>
+      <div>
+        <div class="etape-num">05 · Ancrer ce qui change</div>
+        <div class="etape-desc">Stabiliser ce qui se transforme, pas spectaculairement — durablement.</div>
+      </div>
+      <div>
+        <div class="etape-num">06 · Reprendre ta place</div>
+        <div class="etape-desc">Repartir depuis l'intérieur — avec une clarté qui tient.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cadre">
+    <h2>Ce qui se transforme</h2>
+    <p>Tu arrêtes de te contourner. Ce que tu faisais sans le voir devient visible — et donc traversable.</p>
+    <p>Tu vois plus clair dans tes réactions. Pas pour les analyser — pour ne plus en être prisonnière.</p>
+    <p>Tu te positionnes différemment. Sans te forcer. Depuis un endroit en toi qui était là depuis le début.</p>
+    <p>Ce n'est pas spectaculaire. Mais c'est stable.</p>
+  </div>
+
+  <div class="cadre">
+    <h2>Pour qui</h2>
+    <div class="pour-toi-si">
+      <div>Tu sens que tu t'éloignes de toi.</div>
+      <div>Tu n'en peux plus de t'adapter.</div>
+      <div>Tu tournes en rond depuis trop longtemps.</div>
+      <div>Tu es prêt(e) à voir même ce qui dérange.</div>
+    </div>
+    <div class="pas-pour-toi">
+      <div>Tu veux aller mieux sans te regarder.</div>
+      <div>Tu préfères rester dans le flou.</div>
+      <div>Tu attends que ça change sans te positionner.</div>
+    </div>
+  </div>
+
+  <div class="cadre">
+    <h2>Le cadre</h2>
+    <p>6 séances individuelles en visio</p>
+    <p>Une par semaine · 45 à 60 minutes<br>Un cadre simple, direct, sans surcharge.</p>
+    <p>333€</p>
+  </div>
+
+  <div class="cta-centre">
+    <p class="tagline">Continuer à t'éviter a déjà un coût.<br>La question, c'est combien de temps encore.</p>
+    <p class="tagline" style="margin-bottom:30px;">Si tu es prête à voir clairement, pas parfaitement,<br>juste honnêtement... c'est ici que ça commence.</p>
+    <a class="btn-contact" href="https://buy.stripe.com/14A5kw0bbagLb081tscV20e">Je suis prêt(e)</a>
+    <div><a class="btn-secondaire" href="mailto:ludmillaenergie@gmail.com?subject=RDV%20%C3%A9change%20d%C3%A9couverte">Réserver un échange découverte</a></div>
+  </div>
+
+  <p class="note">Tu sens que c'est un point plus isolé qu'un schéma profond ?<br>La <a href="https://ludmillaenergie.wixsite.com/ludmilla-energie-1/r%C3%A9conciliation-int%C3%A9rieure">Réconciliation Intérieure</a> — une seule séance à 88€ — sera plus adapté.</p>
+
+  <footer>Ludmilla Énergie</footer>
+
+</div>
+</body>
+</html>
