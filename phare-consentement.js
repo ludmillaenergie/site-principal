@@ -88,6 +88,11 @@
     if (!vid) {
       vid = genererId('v');
       ecrireCookie('lp_vid', vid, VID_MAX_AGE); // durée fixe, jamais prolongée ensuite
+      // Ancre de création, transmise au collecteur avec chaque événement afin
+      // qu'il puisse calculer une expiration FIXE pour le jeton d'effacement
+      // (voir memoriserJetonEffacement) — jamais réinitialisée ensuite, donc
+      // toujours identique à la date de création de lp_vid.
+      ecrireCookie('lp_vid_cree_le', new Date().toISOString(), VID_MAX_AGE);
     }
     return vid;
   }
@@ -113,6 +118,28 @@
   }
 
   // ---------------------------------------------------------------------
+  // Jeton d'effacement — reçu dans la réponse JSON de /collecte, jamais via
+  // un cookie posé par le collecteur (qui serait sur un autre domaine et
+  // donc invisible ici). Conservé dans lp_delete_token, sur le domaine du
+  // site, pour être renvoyé explicitement lors d'une demande d'effacement.
+  // ---------------------------------------------------------------------
+
+  function memoriserJetonEffacement(jeton) {
+    if (!jeton) return;
+    // Ne jamais remplacer un jeton déjà présent : on ne veut pas repousser
+    // son horizon d'expiration à chaque page vue (voir lp_vid_cree_le).
+    if (lireCookie('lp_delete_token')) return;
+
+    var ancre = lireCookie('lp_vid_cree_le');
+    var ancreMs = ancre ? Date.parse(ancre) : NaN;
+    var expirationCibleMs = (isNaN(ancreMs) ? Date.now() : ancreMs) + VID_MAX_AGE * 1000;
+    var maxAgeRestant = Math.floor((expirationCibleMs - Date.now()) / 1000);
+    if (maxAgeRestant <= 0) return; // horizon déjà dépassé : inutile de stocker un jeton mort
+
+    ecrireCookie('lp_delete_token', jeton, maxAgeRestant);
+  }
+
+  // ---------------------------------------------------------------------
   // Envoi d'événements — jamais avant acceptation explicite
   // ---------------------------------------------------------------------
 
@@ -122,6 +149,7 @@
       event_id: genererId('e'),
       visitor_id: assurerVisitorId(),
       session_id: assurerSessionId(),
+      visitor_cree_le: lireCookie('lp_vid_cree_le'),
       type: type,
       occurred_at: new Date().toISOString(),
       environnement: 'test'
@@ -132,6 +160,10 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(corps),
       keepalive: true
+    }).then(function (reponse) {
+      return reponse && reponse.ok ? reponse.json() : null;
+    }).then(function (donnees) {
+      if (donnees) memoriserJetonEffacement(donnees.deletion_token);
     }).catch(function () { /* best-effort : ne bloque jamais la navigation */ });
   }
 
@@ -140,29 +172,37 @@
   // la demande d'effacement réussisse ou non :
   //   1. toute nouvelle collecte est stoppée et le refus enregistré tout
   //      de suite (definirConsentement('refused') avant l'appel réseau) ;
-  //   2. lp_vid est conservé le temps strictement nécessaire à l'envoi de
-  //      la demande d'effacement (le collecteur l'identifie par ce cookie) ;
-  //   3. lp_vid/lp_sid sont ensuite supprimés dans tous les cas, succès
-  //      comme échec réseau — jamais de réactivation de la collecte.
+  //   2. le jeton d'effacement (lp_delete_token) identifie le visiteur
+  //      auprès du collecteur — plus un cookie transmis automatiquement par
+  //      le navigateur (lp_vid n'est jamais envoyé au collecteur : cookie du
+  //      domaine du site, pas du sien), mais une valeur que ce script lit
+  //      lui-même et transmet explicitement dans le corps de la requête ;
+  //   3. lp_vid/lp_sid/lp_delete_token sont ensuite supprimés dans tous les
+  //      cas, succès comme échec réseau — jamais de réactivation de la
+  //      collecte.
   // Le callback reçoit `succes` (booléen) pour permettre d'informer la
   // personne, sobrement, si l'effacement n'a pas pu être confirmé.
   // ---------------------------------------------------------------------
 
   function effacerMesDonnees(callback) {
     definirConsentement('refused');
+    var jeton = lireCookie('lp_delete_token');
 
     fetch(COLLECTEUR_URL + '/effacer-mes-donnees', {
       method: 'POST',
-      credentials: 'include'
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ deletion_token: jeton })
     }).then(function (reponse) {
       return !!(reponse && reponse.ok);
     }).catch(function () {
       return false;
     }).then(function (succes) {
       supprimerCookie('lp_vid');
+      supprimerCookie('lp_vid_cree_le');
       supprimerCookie('lp_sid');
       supprimerCookie('lp_session_debut');
       supprimerCookie('lp_derniere_activite');
+      supprimerCookie('lp_delete_token');
       if (callback) callback(succes);
     });
   }
