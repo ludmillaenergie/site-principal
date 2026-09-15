@@ -220,7 +220,9 @@
       'opacity:.6;font-size:12px;cursor:pointer;margin-top:14px;',
       'font-family:"Raleway",sans-serif;text-decoration:underline;}',
       '@media (max-width:480px){.lp-bandeau{flex-direction:column;',
-      'align-items:stretch;padding:16px;}.lp-boutons{justify-content:stretch;}',
+      'align-items:stretch;padding:16px;}',
+      '.lp-bandeau-texte{flex-basis:auto;}',
+      '.lp-boutons{justify-content:stretch;}',
       '.lp-btn{flex:1;}}'
     ].join('');
     document.head.appendChild(style);
