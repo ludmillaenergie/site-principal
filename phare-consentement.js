@@ -136,21 +136,34 @@
   }
 
   // ---------------------------------------------------------------------
-  // Suppression des données — appelle d'abord le collecteur (avec le
-  // cookie lp_vid existant), puis seulement ensuite supprime les cookies
-  // locaux, dans cet ordre précis.
+  // Retrait du consentement — le retrait prend effet immédiatement, que
+  // la demande d'effacement réussisse ou non :
+  //   1. toute nouvelle collecte est stoppée et le refus enregistré tout
+  //      de suite (definirConsentement('refused') avant l'appel réseau) ;
+  //   2. lp_vid est conservé le temps strictement nécessaire à l'envoi de
+  //      la demande d'effacement (le collecteur l'identifie par ce cookie) ;
+  //   3. lp_vid/lp_sid sont ensuite supprimés dans tous les cas, succès
+  //      comme échec réseau — jamais de réactivation de la collecte.
+  // Le callback reçoit `succes` (booléen) pour permettre d'informer la
+  // personne, sobrement, si l'effacement n'a pas pu être confirmé.
   // ---------------------------------------------------------------------
 
   function effacerMesDonnees(callback) {
+    definirConsentement('refused');
+
     fetch(COLLECTEUR_URL + '/effacer-mes-donnees', {
       method: 'POST',
       credentials: 'include'
-    }).catch(function () { /* best-effort */ }).then(function () {
+    }).then(function (reponse) {
+      return !!(reponse && reponse.ok);
+    }).catch(function () {
+      return false;
+    }).then(function (succes) {
       supprimerCookie('lp_vid');
       supprimerCookie('lp_sid');
       supprimerCookie('lp_session_debut');
       supprimerCookie('lp_derniere_activite');
-      if (callback) callback();
+      if (callback) callback(succes);
     });
   }
 
@@ -241,8 +254,9 @@
     bandeau.innerHTML =
       '<p class="lp-bandeau-texte">' +
         '<span class="lp-bandeau-titre">Une mesure discrète, jamais imposée</span><br>' +
-        'Ce site utilise une mesure de fréquentation anonyme pour comprendre comment il est parcouru et l’améliorer. ' +
-        'Aucune donnée n’est collectée sans ton accord, et tu peux changer d’avis à tout moment.' +
+        'Avec ton accord, ce site utilise des cookies de mesure pour comprendre comment il est parcouru et ' +
+        'améliorer ce qui doit l’être. Ils ne contiennent ni ton nom, ni ton adresse e-mail, ni ce que tu écris ' +
+        'dans Le Repère ou Le Passage. Tu peux refuser ou changer d’avis à tout moment.' +
       '</p>' +
       '<div class="lp-boutons">' +
         '<button type="button" class="lp-btn lp-btn-refuser" data-lp-action="refuser">Refuser</button>' +
@@ -324,9 +338,9 @@
     if (retirer) retirer.addEventListener('click', function () {
       retirer.disabled = true;
       retirer.textContent = 'Effacement en cours…';
-      effacerMesDonnees(function () {
-        definirConsentement('refused');
+      effacerMesDonnees(function (succes) {
         fermerPanneau();
+        if (!succes) afficherMessageEchecEffacement();
       });
     });
 
@@ -334,6 +348,24 @@
     fond.addEventListener('click', function (e) {
       if (e.target === fond) fermerPanneau();
     });
+  }
+
+  // Message sobre affiché lorsque le retrait a bien été pris en compte
+  // (plus aucune collecte, choix déjà enregistré en refus) mais que la
+  // demande d'effacement n'a pas pu être confirmée par le serveur.
+  function afficherMessageEchecEffacement() {
+    var fond = document.createElement('div');
+    fond.className = 'lp-panneau-fond';
+    fond.innerHTML =
+      '<div class="lp-panneau" role="dialog" aria-label="Effacement non confirmé">' +
+        '<h2>Effacement non confirmé</h2>' +
+        '<p>Ton consentement est retiré : aucune nouvelle mesure ne sera envoyée depuis cet appareil. ' +
+        'La demande d’effacement des données déjà mesurées n’a en revanche pas pu être confirmée par le serveur.</p>' +
+        '<button type="button" class="lp-btn-fermer" data-lp-action="fermer">Fermer</button>' +
+      '</div>';
+    document.body.appendChild(fond);
+    fond.querySelector('[data-lp-action="fermer"]').addEventListener('click', function () { fond.remove(); });
+    fond.addEventListener('click', function (e) { if (e.target === fond) fond.remove(); });
   }
 
   function creerLienPermanent() {
