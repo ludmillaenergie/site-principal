@@ -177,11 +177,28 @@
   //      le navigateur (lp_vid n'est jamais envoyé au collecteur : cookie du
   //      domaine du site, pas du sien), mais une valeur que ce script lit
   //      lui-même et transmet explicitement dans le corps de la requête ;
-  //   3. lp_vid/lp_sid/lp_delete_token sont ensuite supprimés dans tous les
-  //      cas, succès comme échec réseau — jamais de réactivation de la
+  //   3. lp_vid/lp_vid_cree_le/lp_sid/lp_delete_token (et les cookies de
+  //      session) sont ensuite supprimés dans tous les cas — succès, échec
+  //      serveur (400) ou échec réseau — jamais de réactivation de la
   //      collecte.
   // Le callback reçoit `succes` (booléen) pour permettre d'informer la
   // personne, sobrement, si l'effacement n'a pas pu être confirmé.
+  //
+  // LIMITE CONNUE (acceptée pour l'instant, aucun mécanisme de rattrapage
+  // construit) : si la personne retire son consentement avant que la
+  // réponse du tout premier /collecte ne soit revenue, lp_delete_token
+  // n'existe pas encore. La demande d'effacement part donc avec
+  // deletion_token: null, le serveur la refuse (400, comportement identique
+  // à un jeton absent, voir test/deletion-token.test.js et
+  // test/collecte.test.js côté collecteur), et « Effacement non confirmé »
+  // s'affiche — alors même que, dans cette fenêtre étroite, un premier
+  // événement a pu être écrit côté collecteur juste avant. Comme lp_vid est
+  // supprimé immédiatement quel que soit le résultat, aucune nouvelle
+  // tentative en libre-service n'est ensuite possible pour cette ligne
+  // précise (le visitor_id qui la désignait n'existe plus dans ce
+  // navigateur). Pas de correctif construit à ce stade : la fenêtre est
+  // étroite (le temps d'un aller-retour réseau), et le comportement reste
+  // honnête (jamais de faux succès) plutôt que silencieusement inexact.
   // ---------------------------------------------------------------------
 
   function effacerMesDonnees(callback) {
