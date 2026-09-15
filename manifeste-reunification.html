@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manifeste de la Réunification | Ludmilla Énergie</title>
+<meta name="description" content="Arrêter de te couper en deux. Revenir à toi. Sans culpabilité, sans compromis. PDF téléchargeable et audio, 22€.">
+<meta property="og:title" content="Manifeste de la Réunification | Ludmilla Énergie">
+<meta property="og:description" content="Arrêter de te couper en deux. Revenir à toi. Sans culpabilité, sans compromis.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ludmillaenergie.fr/manifeste-reunification.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
+
+  :root{
+    --noir: #09070a; --noir-2: #120e13;
+    --or: #c8a96e; --or-clair: #e2caa0;
+    --ivoire: #f3ead9; --ivoire-dim: #cfc3ab;
+  }
+  *{ box-sizing:border-box; }
+  html, body{
+    margin:0; padding:0;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(200,169,110,0.10), transparent 60%),
+                linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
+    font-family:'Raleway', sans-serif; color: var(--ivoire);
+  }
+  .conteneur{ max-width: 640px; margin:0 auto; padding: 60px 24px 90px; }
+  .retour{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim); text-decoration:none; opacity:0.6; }
+  .retour:hover{ opacity:1; color: var(--or-clair); }
+
+  header{ text-align:center; margin: 50px 0 30px; }
+  .eyebrow{ font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color: var(--or); opacity:0.85; margin-bottom:14px; }
+  h1{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:40px; color: var(--or-clair); margin:0 0 18px; line-height:1.15; }
+  .accroche{ font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim); opacity:0.8; margin-bottom:22px; }
+  .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--ivoire); opacity:0.9; max-width:480px; margin:0 auto 28px; line-height:1.65; }
+  .prix-format{ font-size:12.5px; letter-spacing:1px; color: var(--ivoire-dim); opacity:0.8; margin-bottom: 26px; }
+
+  .btn-contact{
+    display:inline-block; font-size:12.5px; letter-spacing:2.5px; text-transform:uppercase;
+    color: var(--noir); background: var(--or); padding:16px 40px; border-radius:999px;
+    text-decoration:none; transition: all .3s ease;
+  }
+  .btn-contact:hover{ background: var(--or-clair); box-shadow: 0 0 24px rgba(200,169,110,0.35); }
+  .btn-secondaire{
+    display:inline-block; margin-top:16px; font-size:11.5px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim);
+    text-decoration:none; border-bottom: 1px dotted rgba(200,169,110,0.4); padding-bottom:2px;
+    transition: all .3s ease;
+  }
+  .btn-secondaire:hover{ color: var(--or-clair); border-color: var(--or-clair); }
+
+  .cadre{
+    border:1px solid rgba(200,169,110,0.35); border-radius:18px; padding: 36px 30px;
+    background: linear-gradient(180deg, rgba(200,169,110,0.05), transparent 60%);
+    margin: 30px 0;
+  }
+  .cadre h2{
+    font-family:'Raleway', sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin:0 0 18px;
+  }
+  .cadre p{ font-size:15px; line-height:1.8; color: var(--ivoire); opacity:0.9; margin:0 0 16px; }
+  .cadre p:last-child{ margin-bottom:0; }
+
+  .extrait{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:22px; color: var(--or-clair);
+    text-align:center; line-height:1.6;
+  }
+
+  .recois{ display:flex; flex-direction:column; gap:20px; }
+  .recois-item .recois-nom{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:18px; color: var(--or-clair); margin-bottom:4px; }
+  .recois-item .recois-desc{ font-size:14.5px; line-height:1.65; color: var(--ivoire-dim); opacity:0.9; }
+
+  .pour-toi-si{ display:flex; flex-direction:column; gap:14px; }
+  .pour-toi-si div{ font-size:15px; line-height:1.7; color: var(--ivoire); opacity:0.9; padding-left: 20px; position:relative; }
+  .pour-toi-si div::before{ content:"—"; position:absolute; left:0; color: var(--or); opacity:0.7; }
+
+  .cta-centre{ text-align:center; margin: 40px 0; }
+
+  .autres{ margin-top: 60px; }
+  .autres h2{
+    text-align:center; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin:0 0 20px;
+  }
+  .autres-liens{ display:flex; flex-direction:column; gap:10px; text-align:center; }
+  .autres-liens a{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:17px; color: var(--or-clair); text-decoration:none; opacity:0.85; }
+  .autres-liens a:hover{ opacity:1; }
+
+  footer{ text-align:center; margin-top: 80px; font-family:'Allura', cursive; font-size:30px; color: var(--or); opacity:0.85; }
+
+  @media (max-width:480px){ h1{ font-size:30px; } .tagline{ font-size:17px; } }
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <a class="retour" href="manifestes.html">← Retour aux manifestes</a>
+
+  <header>
+    <div class="eyebrow">II · Manifeste</div>
+    <h1>La réunification</h1>
+    <p class="accroche">Arrêter de te couper en deux · Revenir à toi · Sans culpabilité · Sans compromis</p>
+    <p class="tagline">Ce n'est pas un PDF de plus.<br>Ni un guide pour « aller mieux ».<br>C'est un espace pour revenir à toi.</p>
+    <p class="prix-format">PDF téléchargeable + audio · 22€</p>
+    <a class="btn-contact" href="https://buy.stripe.com/3cI4gsbTT3Sn1py3BAcV204">Lire le Manifeste</a>
+  </header>
+
+  <div class="cadre">
+    <h2>Ce qui se passe vraiment</h2>
+    <p>Parfois, on sait beaucoup de choses intérieurement. Mais quelque chose continue de se répéter.</p>
+    <p>Pas par manque de volonté. Pas parce qu'on ne comprend pas. Mais parce qu'on s'est éloigné de soi sans vraiment s'en rendre compte.</p>
+    <p>Il y a un décalage entre ce que tu ressens, ce que tu comprends, et la manière dont tu continues malgré tout. Ce manifeste est là pour ces moments-là.</p>
+    <p>Le plus douloureux, ce n'est pas toujours ce qui nous est arrivé.<br>C'est l'endroit en nous où l'on s'est quitté(e) pour survivre.</p>
+    <p>Pas pour te donner une méthode. Mais pour remettre du lien avec quelque chose de plus simple : être là. Avec toi-même. Sans avoir besoin de fuir ce que tu ressens.</p>
+  </div>
+
+  <div class="cadre">
+    <h2>Un extrait</h2>
+    <p class="extrait">Ne plus te fuir.<br>Revenir.<br><br>C'est aussi simple… et aussi difficile que ça.<br>Mais c'est exactement là<br>que tout peut basculer.</p>
+  </div>
+
+  <div class="cadre">
+    <h2>Ce que tu reçois</h2>
+    <div class="recois">
+      <div class="recois-item">
+        <div class="recois-nom">La réunification</div>
+        <div class="recois-desc">Un espace pour revenir à toi, sans dogme ni discours parfait.</div>
+      </div>
+      <div class="recois-item">
+        <div class="recois-nom">La reconnaissance</div>
+        <div class="recois-desc">Des mots pour mettre en lumière ce que tu vis intérieurement — enfin nommé.</div>
+      </div>
+      <div class="recois-item">
+        <div class="recois-nom">Le retour au présent</div>
+        <div class="recois-desc">Des réflexions et des pratiques pour revenir à toi plus concrètement.</div>
+      </div>
+      <div class="recois-item">
+        <div class="recois-nom">Le dépôt</div>
+        <div class="recois-desc">Des espaces pour écrire, observer, et laisser émerger tes prises de conscience.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cadre">
+    <h2>Pour toi si</h2>
+    <div class="pour-toi-si">
+      <div>Tu sens un écart entre ce que tu ressens profondément et la manière dont tu vis aujourd'hui.</div>
+      <div>Tu as l'impression de continuer à avancer... sans vraiment être là avec toi-même.</div>
+      <div>Tu veux revenir à quelque chose de plus vrai intérieurement, sans te juger davantage.</div>
+      <div>Tu cherches un espace honnête, humain, sans faux réconfort.</div>
+    </div>
+  </div>
+
+  <div class="cadre">
+    <h2>Le format</h2>
+    <p>PDF téléchargeable + Audio</p>
+    <p>À lire et écouter à ton rythme.<br>Accès immédiat après achat.</p>
+    <p>22€</p>
+  </div>
+
+  <div class="cta-centre">
+    <p class="tagline">Ce que tu évites de regarder<br>continue simplement à se répéter autrement.</p>
+    <p class="tagline" style="margin-bottom:30px;">Revenir à toi dans un texte, c'est un début.<br>Si tu sens qu'il te faut un espace pour le faire vraiment,<br>avec quelqu'un — c'est possible aussi.</p>
+    <a class="btn-contact" href="https://buy.stripe.com/3cI4gsbTT3Sn1py3BAcV204">Lire le Manifeste</a>
+    <div><a class="btn-secondaire" href="psycho-energeticienne.html#accompagnements">Voir les accompagnements</a></div>
+  </div>
+
+  <div class="autres">
+    <h2>Les autres manifestes</h2>
+    <div class="autres-liens">
+      <a href="manifeste-rester.html">Manifeste de la Traversée — Rester</a>
+      <a href="manifeste-ego-a-soi.html">Manifeste de l'Ego à Soi</a>
+    </div>
+  </div>
+
+  <footer>Ludmilla Énergie</footer>
+
+</div>
+</body>
+</html>
