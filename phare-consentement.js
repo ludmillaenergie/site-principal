@@ -8,12 +8,19 @@
  *  - envoie les premiers événements (page_vue, clic_offre) vers le
  *    collecteur de production ;
  *  - fournit un point d'entrée permanent pour changer d'avis, retirer son
- *    consentement et effacer ses données.
+ *    consentement et effacer ses données ;
+ *  - partage lp_consent, lp_consent_date, lp_vid, lp_sid, lp_session_debut
+ *    et lp_derniere_activite avec Le Repère (lerepere.ludmillaenergie.fr)
+ *    via Domain=ludmillaenergie.fr, pour que le même choix et le même
+ *    visitor_id vaillent des deux côtés. lp_vid_cree_le et lp_delete_token
+ *    restent strictement propres à ce site : Le Repère ne les voit jamais.
  */
 (function () {
   'use strict';
 
   var COLLECTEUR_URL = 'https://le-phare-collecteur.ludmillaenergie.workers.dev';
+  var DOMAINE_PARTAGE = 'ludmillaenergie.fr';
+  var VERSION_MIGRATION = 'lp_cookie_scope_v1';
 
   var CONSENT_MAX_AGE = 180 * 24 * 60 * 60;   // 6 mois, fixe, jamais prolongé
   var VID_MAX_AGE = 396 * 24 * 60 * 60;        // 13 mois, fixe (sous le plafond navigateur de 400 jours)
@@ -37,6 +44,19 @@
   // ---------------------------------------------------------------------
   // Cookies
   // ---------------------------------------------------------------------
+  //
+  // Deux familles, jamais interchangeables :
+  //  - "partagés" (Domain=ludmillaenergie.fr) : lisibles et inscriptibles
+  //    depuis lerepere.ludmillaenergie.fr comme depuis ce site. Réservés à
+  //    lp_consent, lp_consent_date, lp_vid, lp_sid, lp_session_debut,
+  //    lp_derniere_activite et au drapeau de migration lui-même.
+  //  - "host-only" (pas d'attribut Domain) : visibles uniquement sur ce
+  //    site. lp_vid_cree_le et lp_delete_token restent ici pour toujours.
+  //
+  // lireCookie() ne distingue pas les deux : document.cookie ne renvoie
+  // jamais l'attribut Domain. Tant que la migration ci-dessous ne laisse
+  // jamais coexister deux valeurs différentes pour un même nom, cette
+  // lecture reste sans ambiguïté.
 
   function lireCookie(nom) {
     var m = document.cookie.match(new RegExp('(?:^|; )' + nom + '=([^;]*)'));
@@ -53,6 +73,17 @@
     document.cookie = nom + '=; Path=/; Max-Age=0; SameSite=Lax';
   }
 
+  function ecrireCookiePartage(nom, valeur, maxAgeSecondes) {
+    var securise = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = nom + '=' + encodeURIComponent(valeur) +
+      '; Path=/; Domain=' + DOMAINE_PARTAGE + '; Max-Age=' + maxAgeSecondes +
+      '; SameSite=Lax' + securise;
+  }
+
+  function supprimerCookiePartage(nom) {
+    document.cookie = nom + '=; Path=/; Domain=' + DOMAINE_PARTAGE + '; Max-Age=0; SameSite=Lax';
+  }
+
   function genererId(prefixe) {
     var octets = new Uint8Array(16);
     (window.crypto || window.msCrypto).getRandomValues(octets);
@@ -60,6 +91,109 @@
       return o.toString(16).padStart(2, '0');
     }).join('');
     return prefixe + '_' + hex; // toujours >= 8 caractères, conforme à idValide()
+  }
+
+  // Durée restante (en secondes, jamais négative) jusqu'à ancreIso + durée
+  // totale. Sans ancre connue, renvoie la durée totale (équivaut à ancrer
+  // sur maintenant — le seul cas légitime : une valeur réellement neuve).
+  // Fonction centrale à la règle « ne jamais prolonger artificiellement une
+  // échéance » : toute réécriture d'un cookie déjà existant doit passer par
+  // elle plutôt que par la durée pleine.
+  function dureeRestanteSecondes(ancreIso, dureeTotaleSecondes) {
+    var ancreMs = ancreIso ? Date.parse(ancreIso) : NaN;
+    if (isNaN(ancreMs)) return dureeTotaleSecondes;
+    return Math.max(0, Math.floor((ancreMs + dureeTotaleSecondes * 1000 - Date.now()) / 1000));
+  }
+
+  // ---------------------------------------------------------------------
+  // Migration des anciens cookies host-only vers les cookies partagés
+  // ---------------------------------------------------------------------
+  //
+  // Ordre impératif, pour ne jamais perdre un choix déjà exprimé :
+  //   1. lire et mémoriser les valeurs host-only actuelles ;
+  //   2. écrire les cookies partagés avec exactement les mêmes valeurs,
+  //      sur des échéances ancrées à leur origine réelle (jamais remises à
+  //      "maintenant + durée pleine") ;
+  //   3. supprimer ensuite les anciennes variantes host-only ;
+  //   4. poser lp_cookie_scope_v1 pour ne plus jamais rejouer cette suite.
+  //
+  // Entre les étapes 2 et 3, un même nom peut brièvement exister à la fois
+  // en host-only et en partagé — sans ambiguïté de lecture, puisque les
+  // deux portent alors la même valeur (copiée à l'étape 2, jamais recalculée).
+  function migrerCookiesPartages() {
+    if (lireCookie(VERSION_MIGRATION) === '1') return; // déjà fait
+
+    var anciennes = {
+      lp_consent: lireCookie('lp_consent'),
+      lp_consent_date: lireCookie('lp_consent_date'),
+      lp_vid: lireCookie('lp_vid'),
+      lp_sid: lireCookie('lp_sid'),
+      lp_session_debut: lireCookie('lp_session_debut'),
+      lp_derniere_activite: lireCookie('lp_derniere_activite')
+    };
+
+    // 2a. Consentement — ancré sur sa propre date, jamais prolongé.
+    if (anciennes.lp_consent) {
+      var dureeConsent = dureeRestanteSecondes(anciennes.lp_consent_date, CONSENT_MAX_AGE);
+      if (dureeConsent > 0) {
+        ecrireCookiePartage('lp_consent', anciennes.lp_consent, dureeConsent);
+        if (anciennes.lp_consent_date) {
+          ecrireCookiePartage('lp_consent_date', anciennes.lp_consent_date, dureeConsent);
+        }
+      }
+    }
+
+    // 2b. Identifiant visiteur — ancré sur lp_vid_cree_le, ou à défaut sur
+    // lp_consent_date (jamais sur aujourd'hui). assurerAncreVid() répare au
+    // passage lp_vid_cree_le s'il manquait, sans jamais le réinitialiser
+    // s'il existait déjà.
+    if (anciennes.lp_vid) {
+      var ancreVid = assurerAncreVid();
+      var dureeVid = dureeRestanteSecondes(ancreVid, VID_MAX_AGE);
+      if (dureeVid > 0) {
+        ecrireCookiePartage('lp_vid', anciennes.lp_vid, dureeVid);
+      }
+    }
+
+    // 2c. Cookies de session — logique de roulement inchangée, on ne fait
+    // que recopier la valeur courante sur la durée de session habituelle.
+    if (anciennes.lp_sid) {
+      ecrireCookiePartage('lp_sid', anciennes.lp_sid, SESSION_MAX_AGE);
+    }
+    if (anciennes.lp_session_debut) {
+      ecrireCookiePartage('lp_session_debut', anciennes.lp_session_debut, SESSION_MAX_AGE);
+    }
+    if (anciennes.lp_derniere_activite) {
+      ecrireCookiePartage('lp_derniere_activite', anciennes.lp_derniere_activite, SESSION_MAX_AGE);
+    }
+
+    // 3. Suppression des anciennes variantes host-only — seulement celles
+    // qui existaient. lp_vid_cree_le et lp_delete_token ne sont jamais
+    // touchés ici : ils restent host-only pour toujours.
+    if (anciennes.lp_consent !== null) supprimerCookie('lp_consent');
+    if (anciennes.lp_consent_date !== null) supprimerCookie('lp_consent_date');
+    if (anciennes.lp_vid !== null) supprimerCookie('lp_vid');
+    if (anciennes.lp_sid !== null) supprimerCookie('lp_sid');
+    if (anciennes.lp_session_debut !== null) supprimerCookie('lp_session_debut');
+    if (anciennes.lp_derniere_activite !== null) supprimerCookie('lp_derniere_activite');
+
+    // 4. Drapeau de version — partagé, longue durée, jamais renouvelé par
+    // la suite : si jamais il expirait un jour très lointain, la migration
+    // se rejouerait sur un état déjà vide (aucune variante host-only à
+    // reprendre) et ne ferait donc rien de plus qu'un no-op.
+    ecrireCookiePartage(VERSION_MIGRATION, '1', VID_MAX_AGE);
+  }
+
+  // Si le retrait de consentement a été effectué depuis Le Repère,
+  // lp_consent=refused arrive ici en cookie partagé, mais lp_delete_token
+  // et lp_vid_cree_le — strictement host-only à ce site — n'ont pas pu être
+  // nettoyés depuis là-bas. On les supprime nous-mêmes dès la prochaine
+  // visite, sans envoyer aucun événement : le retrait est déjà enregistré,
+  // il ne s'agit que d'un nettoyage local.
+  function nettoyerResidusHostOnlySiRefus() {
+    if (etatConsentement() !== 'refused') return;
+    if (lireCookie('lp_delete_token') !== null) supprimerCookie('lp_delete_token');
+    if (lireCookie('lp_vid_cree_le') !== null) supprimerCookie('lp_vid_cree_le');
   }
 
   // ---------------------------------------------------------------------
@@ -72,24 +206,43 @@
   }
 
   function definirConsentement(valeur) {
-    ecrireCookie('lp_consent', valeur, CONSENT_MAX_AGE);
-    ecrireCookie('lp_consent_date', new Date().toISOString(), CONSENT_MAX_AGE);
+    ecrireCookiePartage('lp_consent', valeur, CONSENT_MAX_AGE);
+    ecrireCookiePartage('lp_consent_date', new Date().toISOString(), CONSENT_MAX_AGE);
   }
 
   // ---------------------------------------------------------------------
   // Identifiants — uniquement appelés quand le consentement est "accepted"
   // ---------------------------------------------------------------------
 
+  // Retourne l'ISO de création à utiliser comme ancre pour lp_vid, en
+  // créant lp_vid_cree_le (host-only) s'il manque. Ne jamais ancrer sur
+  // "maintenant" tant qu'une date de consentement existe : cela repousserait
+  // indûment l'horizon d'expiration du jeton d'effacement. Ne touche jamais
+  // lp_vid_cree_le s'il existe déjà.
+  function assurerAncreVid() {
+    var ancre = lireCookie('lp_vid_cree_le');
+    if (ancre) return ancre;
+
+    var repli = lireCookie('lp_consent_date') || new Date().toISOString();
+    var dureeRestante = dureeRestanteSecondes(repli, VID_MAX_AGE);
+    if (dureeRestante > 0) {
+      ecrireCookie('lp_vid_cree_le', repli, dureeRestante);
+    }
+    return repli;
+  }
+
   function assurerVisitorId() {
     var vid = lireCookie('lp_vid');
     if (!vid) {
       vid = genererId('v');
-      ecrireCookie('lp_vid', vid, VID_MAX_AGE); // durée fixe, jamais prolongée ensuite
-      // Ancre de création, transmise au collecteur avec chaque événement afin
-      // qu'il puisse calculer une expiration FIXE pour le jeton d'effacement
-      // (voir memoriserJetonEffacement) — jamais réinitialisée ensuite, donc
-      // toujours identique à la date de création de lp_vid.
-      ecrireCookie('lp_vid_cree_le', new Date().toISOString(), VID_MAX_AGE);
+      var maintenant = new Date().toISOString();
+      ecrireCookiePartage('lp_vid', vid, VID_MAX_AGE); // durée fixe, jamais prolongée ensuite
+      // Nouveau visiteur : l'ancre est bien "maintenant", ici et seulement ici.
+      ecrireCookie('lp_vid_cree_le', maintenant, VID_MAX_AGE);
+    } else {
+      // lp_vid existait déjà (créé ici ou partagé depuis Le Repère) :
+      // s'assurer que son ancre existe, sans jamais la réinitialiser.
+      assurerAncreVid();
     }
     return vid;
   }
@@ -107,17 +260,17 @@
     if (nouvelleSession) {
       sid = genererId('s');
       debut = maintenant;
-      ecrireCookie('lp_session_debut', String(debut), SESSION_MAX_AGE);
+      ecrireCookiePartage('lp_session_debut', String(debut), SESSION_MAX_AGE);
     }
-    ecrireCookie('lp_sid', sid, SESSION_MAX_AGE);
-    ecrireCookie('lp_derniere_activite', String(maintenant), SESSION_MAX_AGE);
+    ecrireCookiePartage('lp_sid', sid, SESSION_MAX_AGE);
+    ecrireCookiePartage('lp_derniere_activite', String(maintenant), SESSION_MAX_AGE);
     return sid;
   }
 
   // ---------------------------------------------------------------------
   // Jeton d'effacement — reçu dans la réponse JSON de /collecte, jamais via
   // un cookie posé par le collecteur (qui serait sur un autre domaine et
-  // donc invisible ici). Conservé dans lp_delete_token, sur le domaine du
+  // donc invisible ici). Conservé dans lp_delete_token, host-only à ce
   // site, pour être renvoyé explicitement lors d'une demande d'effacement.
   // ---------------------------------------------------------------------
 
@@ -127,10 +280,7 @@
     // son horizon d'expiration à chaque page vue (voir lp_vid_cree_le).
     if (lireCookie('lp_delete_token')) return;
 
-    var ancre = lireCookie('lp_vid_cree_le');
-    var ancreMs = ancre ? Date.parse(ancre) : NaN;
-    var expirationCibleMs = (isNaN(ancreMs) ? Date.now() : ancreMs) + VID_MAX_AGE * 1000;
-    var maxAgeRestant = Math.floor((expirationCibleMs - Date.now()) / 1000);
+    var maxAgeRestant = dureeRestanteSecondes(lireCookie('lp_vid_cree_le'), VID_MAX_AGE);
     if (maxAgeRestant <= 0) return; // horizon déjà dépassé : inutile de stocker un jeton mort
 
     ecrireCookie('lp_delete_token', jeton, maxAgeRestant);
@@ -174,10 +324,10 @@
   //      le navigateur (lp_vid n'est jamais envoyé au collecteur : cookie du
   //      domaine du site, pas du sien), mais une valeur que ce script lit
   //      lui-même et transmet explicitement dans le corps de la requête ;
-  //   3. lp_vid/lp_vid_cree_le/lp_sid/lp_delete_token (et les cookies de
-  //      session) sont ensuite supprimés dans tous les cas — succès, échec
-  //      serveur (400) ou échec réseau — jamais de réactivation de la
-  //      collecte.
+  //   3. lp_vid/lp_sid (et les cookies de session), désormais partagés, et
+  //      lp_vid_cree_le/lp_delete_token, restés host-only, sont ensuite
+  //      supprimés dans tous les cas — succès, échec serveur (400) ou échec
+  //      réseau — jamais de réactivation de la collecte.
   // Le callback reçoit `succes` (booléen) pour permettre d'informer la
   // personne, sobrement, si l'effacement n'a pas pu être confirmé.
   //
@@ -211,11 +361,11 @@
     }).catch(function () {
       return false;
     }).then(function (succes) {
-      supprimerCookie('lp_vid');
+      supprimerCookiePartage('lp_vid');
       supprimerCookie('lp_vid_cree_le');
-      supprimerCookie('lp_sid');
-      supprimerCookie('lp_session_debut');
-      supprimerCookie('lp_derniere_activite');
+      supprimerCookiePartage('lp_sid');
+      supprimerCookiePartage('lp_session_debut');
+      supprimerCookiePartage('lp_derniere_activite');
       supprimerCookie('lp_delete_token');
       if (callback) callback(succes);
     });
@@ -441,6 +591,8 @@
 
   function init() {
     injecterStyles();
+    migrerCookiesPartages();
+    nettoyerResidusHostOnlySiRefus();
     creerLienPermanent();
 
     var etat = etatConsentement();
