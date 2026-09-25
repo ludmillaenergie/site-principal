@@ -36,4 +36,20 @@
     <loc>https://ludmillaenergie.fr/livres.html</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://ludmillaenergie.fr/conditions-generales.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ludmillaenergie.fr/confidentialite.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ludmillaenergie.fr/remboursement.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ludmillaenergie.fr/accessibilite.html</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>
