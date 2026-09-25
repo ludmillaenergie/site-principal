@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livres | Ludmilla Énergie</title>
+<meta name="description" content="Cesser de se contourner et Continuer de se traverser : deux tomes pour celles et ceux qui ont déjà beaucoup cheminé. PDF téléchargeable, avec ou sans audio.">
+<meta property="og:title" content="Livres | Ludmilla Énergie">
+<meta property="og:description" content="Deux tomes pour celles et ceux qui ont déjà beaucoup cheminé. PDF téléchargeable, avec ou sans audio.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ludmillaenergie.fr/livres.html">
+  <link rel="canonical" href="https://ludmillaenergie.fr/livres.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
+
+  :root{
+    --noir: #09070a; --noir-2: #120e13;
+    --or: #c8a96e; --or-clair: #e2caa0;
+    --ivoire: #f3ead9; --ivoire-dim: #cfc3ab;
+  }
+  *{ box-sizing:border-box; }
+  html, body{
+    margin:0; padding:0;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(200,169,110,0.10), transparent 60%),
+                linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
+    font-family:'Raleway', sans-serif; color: var(--ivoire);
+  }
+  html{ scroll-behavior:smooth; }
+  .conteneur{ max-width: 680px; margin:0 auto; padding: 60px 24px 90px; }
+  .retour{ font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ivoire-dim); text-decoration:none; opacity:0.6; }
+  .retour:hover{ opacity:1; color: var(--or-clair); }
+
+  header{ text-align:center; margin: 50px 0 34px; }
+  .eyebrow{ font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color: var(--or); opacity:0.85; margin-bottom:14px; }
+  h1{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:44px; color: var(--or-clair); margin:0 0 18px; line-height:1.15; }
+  .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--ivoire); opacity:0.9; max-width:520px; margin:0 auto 12px; line-height:1.65; text-align:center; }
+
+  .btn-contact{
+    display:inline-block; font-size:12.5px; letter-spacing:2.5px; text-transform:uppercase;
+    color: var(--noir); background: var(--or); padding:16px 34px; border-radius:999px;
+    text-decoration:none; transition: all .3s ease; text-align:center;
+  }
+  .btn-contact:hover{ background: var(--or-clair); box-shadow: 0 0 24px rgba(200,169,110,0.35); }
+  .btn-secondaire{
+    display:inline-block; font-size:12.5px; letter-spacing:2.5px; text-transform:uppercase; color: var(--or-clair);
+    text-decoration:none; border:1px solid rgba(200,169,110,0.5); padding:15px 34px; border-radius:999px;
+    transition: all .3s ease; text-align:center;
+  }
+  .btn-secondaire:hover{ border-color: var(--or-clair); background: rgba(200,169,110,0.08); }
+
+  .cadre{
+    border:1px solid rgba(200,169,110,0.35); border-radius:18px; padding: 36px 30px;
+    background: linear-gradient(180deg, rgba(200,169,110,0.05), transparent 60%);
+    margin: 30px 0;
+  }
+  .cadre h2{
+    font-family:'Raleway', sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin:0 0 18px;
+  }
+  .cadre p{ font-size:15px; line-height:1.8; color: var(--ivoire); opacity:0.9; margin:0 0 16px; }
+  .cadre p:last-child{ margin-bottom:0; }
+
+  .section-titre{
+    text-align:center; font-size:11px; letter-spacing:3.5px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.6; margin: 60px 0 26px;
+  }
+
+  .tome-numero{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color: var(--or); opacity:0.85; margin-bottom:10px; }
+  .tome-nom{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:30px; color: var(--or-clair); margin-bottom:6px; line-height:1.2; }
+  .tome-sous{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--ivoire); opacity:0.9; margin-bottom:24px; }
+
+  .sommaire{ display:flex; flex-direction:column; gap:12px; margin: 0 0 24px; }
+  .sommaire div{ font-size:14.5px; line-height:1.65; color: var(--ivoire); opacity:0.9; padding-left: 20px; position:relative; }
+  .sommaire div::before{ content:"—"; position:absolute; left:0; color: var(--or); opacity:0.7; }
+
+  .pour-toi-si{ display:flex; flex-direction:column; gap:20px; }
+  .pour-toi-si .item-nom{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:18px; color: var(--or-clair); margin-bottom:4px; }
+  .pour-toi-si .item-desc{ font-size:14.5px; line-height:1.65; color: var(--ivoire-dim); opacity:0.9; }
+
+  .choix{ display:flex; flex-wrap:wrap; gap:14px; margin-top: 26px; }
+  .choix .formule{ flex:1 1 220px; text-align:center; }
+  .formule-etiquette{ font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color: var(--or); opacity:0.85; min-height:16px; margin-bottom:8px; }
+  .formule-livraison{ font-size:12px; color: var(--ivoire-dim); opacity:0.7; margin-bottom:10px; }
+  .formule a{ display:block; }
+
+  .prix-collection{ font-family:'Cormorant Garamond', serif; font-size:34px; color: var(--or-clair); margin: 10px 0 4px; text-align:center; }
+  .prix-collection s{ font-size:20px; opacity:0.5; margin-left:10px; }
+  .eco{ text-align:center; font-size:13px; color: var(--ivoire-dim); opacity:0.8; margin-bottom: 24px; }
+  .cta-centre{ text-align:center; }
+
+  .signature{ font-size:14px; line-height:1.8; color: var(--ivoire); opacity:0.85; }
+  .mentions{ text-align:center; font-size:12.5px; line-height:1.7; color: var(--ivoire-dim); opacity:0.7; margin-top: 40px; }
+  .mentions a{ color: var(--ivoire-dim); }
+
+  footer{ text-align:center; margin-top: 80px; font-family:'Allura', cursive; font-size:30px; color: var(--or); opacity:0.85; }
+
+  @media (max-width:480px){ h1{ font-size:34px; } .tagline{ font-size:17px; } .cadre{ padding: 30px 22px; } .tome-nom{ font-size:26px; } }
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <a class="retour" href="psycho-energeticienne.html">← Retour</a>
+
+  <header>
+    <div class="eyebrow">Collection complète · 2 tomes</div>
+    <h1>Cesser de se contourner</h1>
+    <p class="tagline">Une traversée intérieure pour ceux qui ont déjà beaucoup cheminé et qui découvrent qu'il reste encore quelque chose à voir.</p>
+  </header>
+
+  <div class="cadre">
+    <h2>Comprendre ne suffit plus</h2>
+    <p>Tu as fait le travail. Tu as nommé, compris, traversé. Tu t'es assise avec des vérités difficiles et tu ne t'es pas détournée. Et pourtant, il y a des endroits où quelque chose continue de fonctionner à l'ancienne.</p>
+    <p>Ces deux tomes ne sont pas pour ceux qui commencent. Ils sont pour ceux qui ont déjà beaucoup cheminé et qui découvrent qu'à ce niveau du chemin, le contournement ne ressemble plus à ce qu'il était avant.</p>
+    <p>Il s'est raffiné. Il utilise parfois le travail intérieur lui-même pour rester en place.</p>
+    <p>La conscience s'approfondit par couches. Ce qu'on ne pouvait pas encore voir hier devient visible aujourd'hui... non pas parce qu'on avait tort, mais parce qu'on est enfin assez solide pour le regarder.</p>
+    <p class="signature">Ludmilla</p>
+  </div>
+
+  <div class="section-titre">Les 2 tomes · Choisissez votre chemin</div>
+
+  <div class="cadre" id="tome-1">
+    <div class="tome-numero">I · Tome 1 · Le commencement</div>
+    <div class="tome-nom">Cesser de se contourner</div>
+    <div class="tome-sous">Une traversée intérieure en cinq chapitres</div>
+
+    <div class="sommaire">
+      <div>Introduction — L'invitation</div>
+      <div>Reconnaître ce que l'auto-contournement fait vraiment</div>
+      <div>Comprendre sans traverser — quand la lucidité devient refuge</div>
+      <div>Ce qui retient — les fidélités invisibles et la peur de changer</div>
+      <div>L'entre-deux — ni dedans ni ailleurs</div>
+      <div>Commencer à se traverser — la sécurité intérieure</div>
+    </div>
+
+    <p>Pour ceux qui voient clairement... mais qui n'habitent pas encore ce qu'ils voient. Un premier pas honnête, sans méthode, sans promesse de résultat rapide.</p>
+
+    <div class="choix">
+      <div class="formule">
+        <div class="formule-etiquette">&nbsp;</div>
+        <div class="formule-livraison">Téléchargement immédiat</div>
+        <a class="btn-secondaire" href="https://buy.stripe.com/eVq6oA0bb9cHfgo2xwcV20r">PDF seul · 11,99€</a>
+      </div>
+      <div class="formule">
+        <div class="formule-etiquette">Recommandé</div>
+        <div class="formule-livraison">Téléchargement immédiat</div>
+        <a class="btn-contact" href="https://buy.stripe.com/8x228k2jj0Gbc4c0pocV20t">PDF + audio · 21,99€</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cadre" id="tome-2">
+    <div class="tome-numero">II · Tome 2 · L'approfondissement</div>
+    <div class="tome-nom">Continuer de se traverser</div>
+    <div class="tome-sous">Quand comprendre ne suffit plus</div>
+
+    <div class="sommaire">
+      <div>Ce qu'on protège encore — la peur qui opère en dessous</div>
+      <div>La fatigue — quand le courage lui-même s'épuise</div>
+      <div>Le confort de la connaissance — nommer sans traverser</div>
+      <div>L'illusion d'être arrivée — ce qui reste quand on croit avoir fait le tour</div>
+      <div>La sophistication du contournement — se contourner avec intelligence</div>
+      <div>Le deuil non fait — ce qu'on n'a pas encore accepté de laisser partir</div>
+    </div>
+
+    <p>Pour ceux qui ont déjà beaucoup cheminé et qui découvrent que le contournement évolue avec eux. Plus profond. Plus subtil. Plus nécessaire à voir.</p>
+
+    <div class="choix">
+      <div class="formule">
+        <div class="formule-etiquette">&nbsp;</div>
+        <div class="formule-livraison">Téléchargement immédiat</div>
+        <a class="btn-secondaire" href="https://buy.stripe.com/7sYbIU1ff3Sn0lu7RQcV20s">PDF seul · 15,99€</a>
+      </div>
+      <div class="formule">
+        <div class="formule-etiquette">Recommandé</div>
+        <div class="formule-livraison">Téléchargement immédiat</div>
+        <a class="btn-contact" href="https://buy.stripe.com/bJe6oA2jjcoT8S0dcacV20u">PDF + audio · 25,99€</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cadre" id="collection">
+    <h2>Meilleure valeur · La collection complète</h2>
+    <p>Les deux tomes PDF + les 2 Traversée audio réunies pour un chemin complet... du premier regard jusqu'aux couches les plus profondes.</p>
+    <div class="prix-collection">39,99€ <s>47,98€</s></div>
+    <div class="eco">Économisez 8€ · Accès immédiat aux 4 fichiers</div>
+    <div class="cta-centre">
+      <a class="btn-contact" href="https://buy.stripe.com/8x28wI1ff1Kf2tCfkicV20v">Obtenir la collection complète</a>
+    </div>
+  </div>
+
+  <div class="cadre">
+    <h2>Ces tomes sont écrits pour toi si…</h2>
+    <div class="pour-toi-si">
+      <div>
+        <div class="item-nom">Tu travailles sur toi depuis longtemps</div>
+        <div class="item-desc">Tu n'es pas au début. Tu as nommé, compris, traversé. Et pourtant quelque chose continue d'opérer en dessous.</div>
+      </div>
+      <div>
+        <div class="item-nom">Tu comprends… mais rien ne bouge vraiment</div>
+        <div class="item-desc">Tu as les mots pour tout. Tu vois les patterns. Et tu te demandes pourquoi la connaissance ne suffit pas à transformer.</div>
+      </div>
+      <div>
+        <div class="item-nom">Tu sens qu'il y a une couche plus profonde</div>
+        <div class="item-desc">Une fatigue sans nom. Une résistance subtile. Quelque chose que tu portes sans avoir encore les mots pour le nommer.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cadre">
+    <h2>Ludmilla Énergie</h2>
+    <p>Ces tomes sont nés d'une observation : ceux qui ont fait le plus de chemin sont parfois ceux pour qui le contournement devient le plus invisible. Il s'habille de sagesse, de bienveillance, de timing et c'est précisément ce qui le rend si difficile à voir.</p>
+    <p>Cette collection est une invitation à continuer d'aller voir, là où même les bonnes raisons ne suffisent plus à convaincre.</p>
+  </div>
+
+  <p class="mentions">Usage personnel, livraison immédiate.<br>Ces documents sont protégés par les lois sur le droit d'auteur. Pour un usage personnel uniquement.<br>Toute question : <a href="mailto:ludmillaenergie@gmail.com">ludmillaenergie@gmail.com</a></p>
+
+  <footer>Ludmilla Énergie</footer>
+
+</div>
+<script src="/phare-consentement.js" defer></script>
+</body>
+</html>
