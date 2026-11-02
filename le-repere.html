@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Le Repère — Ludmilla Énergie</title>
+<meta name="description" content="Chaque jour, une lecture qui part de toi. Thème de naissance, Design Humain, Gene Keys et numérologie, croisés en une seule lecture personnalisée." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600&family=Allura&display=swap');
+
+  :root{
+    --noir: #09070a; --noir-2: #120e13;
+    --or: #c8a96e; --or-clair: #e2caa0;
+    --ivoire: #f3ead9; --ivoire-dim: #cfc3ab;
+  }
+  *{ box-sizing:border-box; }
+  html, body{
+    margin:0; padding:0;
+    background: radial-gradient(120% 60% at 50% 0%, rgba(200,169,110,0.10), transparent 60%),
+                linear-gradient(180deg, var(--noir) 0%, var(--noir-2) 100%);
+    font-family:'Raleway', sans-serif; color: var(--ivoire);
+  }
+  .conteneur{ max-width: 680px; margin:0 auto; padding: 60px 24px 90px; }
+  .retour{ font-size:13px; letter-spacing:1px; text-transform:uppercase; color: var(--ivoire-dim); text-decoration:none; opacity:0.82; display:inline-block; padding:6px 0; }
+  .retour:hover{ opacity:1; color: var(--or-clair); }
+
+  header{ text-align:center; margin: 50px 0 44px; }
+  .eyebrow{ font-size:12px; letter-spacing:3px; text-transform:uppercase; color: var(--or); opacity:0.92; margin-bottom:14px; }
+  h1{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:44px; color: var(--or-clair); margin:0 0 18px; line-height:1.15; }
+  .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color: var(--ivoire); opacity:0.9; max-width:460px; margin:0 auto; line-height:1.65; }
+
+  .cadre{
+    border:1px solid rgba(200,169,110,0.35); border-radius:18px; padding: 36px 30px;
+    background: linear-gradient(180deg, rgba(200,169,110,0.05), transparent 60%);
+    margin: 40px 0;
+  }
+  .cadre h2{
+    font-family:'Raleway', sans-serif; font-size:12.5px; letter-spacing:2.5px; text-transform:uppercase;
+    color: var(--ivoire-dim); opacity:0.85; margin:0 0 18px;
+  }
+  .cadre p{ font-size:16.5px; line-height:1.7; color: var(--ivoire); opacity:0.96; margin:0 0 14px; }
+  .cadre p:last-child{ margin-bottom:0; }
+
+  .outil{ margin: 0 0 20px; }
+  .outil:last-child{ margin-bottom:0; }
+  .outil-nom{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:600; font-size:18px; color: var(--or-clair); margin-bottom:5px; }
+  .outil-desc{ font-size:16.5px; line-height:1.6; color: var(--ivoire); opacity:0.96; }
+
+  .cta-bloc{ text-align:center; margin: 44px 0; }
+  .btn-acheter{
+    display:inline-block; font-size:14px; letter-spacing:2px; text-transform:uppercase;
+    color: var(--noir); background: var(--or); padding:19px 36px; border-radius:999px;
+    text-decoration:none; transition: all .3s ease; min-height:44px; line-height:1.3;
+  }
+  .btn-acheter:hover{ background: var(--or-clair); box-shadow: 0 0 24px rgba(200,169,110,0.35); }
+  .cta-note{ display:block; margin-top:14px; font-size:13.5px; letter-spacing:0.3px; color: var(--ivoire-dim); opacity:0.92; }
+
+  .prix-bloc{ text-align:center; margin: 50px 0 20px; }
+  .prix{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:40px; color: var(--or-clair); margin-bottom: 8px; }
+  .prix-cond{ font-size:13.5px; letter-spacing:0.3px; color: var(--ivoire-dim); opacity:0.92; margin-bottom: 22px; }
+  .prix-detail{ font-size:13.5px; line-height:1.65; color: var(--ivoire-dim); opacity:0.88; max-width:420px; margin: 18px auto 0; }
+
+  .cadre-intention{ border-color: rgba(200,169,110,0.55); padding-left: 34px; position:relative; }
+  .cadre-intention::before{ content:''; position:absolute; left:16px; top:36px; bottom:36px; width:2px; background: linear-gradient(180deg, var(--or), transparent); }
+  .cadre-intention h2{ font-size:13px; letter-spacing:3px; opacity:0.92; color: var(--or-clair); }
+  .cadre-intention p:first-of-type{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:18.5px; line-height:1.65; opacity:1; }
+  .signature{ font-family:'Allura', cursive; font-size:25px; color: var(--or); opacity:0.92; text-align:right; margin:14px 0 0 !important; }
+
+  footer{ text-align:center; margin-top: 80px; font-family:'Allura', cursive; font-size:30px; color: var(--or); opacity:0.85; }
+
+  @media (max-width:480px){
+    .conteneur{ padding: 44px 20px 70px; }
+    h1{ font-size:32px; } .prix{ font-size:30px; }
+    .cadre{ padding: 28px 22px; }
+    .cadre-intention{ padding-left: 22px; }
+    .cadre-intention::before{ left:8px; }
+    .btn-acheter{ display:block; width:100%; padding:18px 20px; }
+  }
+</style>
+<meta property="og:title" content="Le Repère — Ludmilla Énergie" />
+<meta property="og:description" content="Chaque jour, une lecture qui part de toi. Thème de naissance, Design Humain, Gene Keys et numérologie, croisés en une seule lecture personnalisée." />
+<meta property="og:image" content="https://ludmillaenergie.fr/og-image-accueil.jpg" />
+<meta property="og:url" content="https://ludmillaenergie.fr/le-repere.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+</head>
+<body>
+  <div class="conteneur">
+    <a class="retour" href="index.html">← Retour à l'accueil</a>
+
+    <header>
+      <div class="eyebrow">Lecture Quotidienne Personnalisée</div>
+      <h1>Le Repère</h1>
+      <p class="tagline">Chaque jour, une lecture qui part de toi.</p>
+    </header>
+
+    <div class="cadre">
+      <p>Il y a des jours où tu sais exactement ce qui se joue. Et d'autres où tu sens juste que quelque chose bouge, sans trouver les mots.</p>
+      <p>Le Repère t'aide à mettre des mots sur ce que tu traverses. Chaque jour, une lecture qui t'aide à voir plus clair, pour choisir toi-même ce qui vient ensuite.</p>
+    </div>
+
+    <div class="cta-bloc">
+      <a class="btn-acheter oracle-carte" href="https://lerepere.ludmillaenergie.fr/" target="_blank" rel="noopener">Découvrir mon avant-goût gratuit</a>
+      <span class="cta-note">Gratuit, sans carte bancaire, sans inscription. Un par jour.</span>
+    </div>
+
+    <div class="cadre cadre-intention">
+      <h2>Pourquoi j'ai créé Le Repère</h2>
+      <p>Pendant mon propre cheminement, j'aurais aimé avoir un outil qui m'aide à mieux comprendre ce que je ressentais, ce que je vivais, ce qui se passait en moi.</p>
+      <p>C'est de cette envie qu'est né Le Repère.</p>
+      <p>J'ai voulu créer quelque chose qui aide chacun à mieux se comprendre, à mettre des mots sur ce qu'il ressent, à éclairer ce qu'il traverse.</p>
+      <p>Pas un outil qui donne des réponses toutes faites, ou qui décide à notre place. Un éclairage, pour avancer avec davantage de conscience de soi.</p>
+      <p class="signature">— Ludmilla</p>
+    </div>
+
+    <div class="cadre">
+      <h2>Les quatre outils</h2>
+      <p>Le Repère s'appuie sur quatre outils, pensés pour se compléter.</p>
+      <div class="outil">
+        <div class="outil-nom">Le thème de naissance</div>
+        <div class="outil-desc">S'appuie sur la position des astres au moment de ta naissance.</div>
+      </div>
+      <div class="outil">
+        <div class="outil-nom">Le Design Humain</div>
+        <div class="outil-desc">Regarde comment tu fonctionnes au quotidien, comment tu décides, comment tu avances.</div>
+      </div>
+      <div class="outil">
+        <div class="outil-nom">Les Gene Keys</div>
+        <div class="outil-desc">S'intéressent à tes endroits de friction, ceux qui reviennent souvent, et à ce qu'ils peuvent devenir.</div>
+      </div>
+      <div class="outil">
+        <div class="outil-nom">La numérologie</div>
+        <div class="outil-desc">Regarde ton rythme : ton mois et ton jour personnels, calculés à partir de ta naissance et de la date d'aujourd'hui.</div>
+      </div>
+      <p style="margin-top:18px;">Le Repère croise les quatre, chaque jour, dans une seule lecture.</p>
+    </div>
+
+    <div class="cadre">
+      <h2>L'avant-goût, et ce qui change avec l'abonnement</h2>
+      <p>Pour ton avant-goût, il te suffit de ton prénom et de ta date de naissance. Si tu connais l'heure et le lieu, ajoute-les, ta lecture sera plus précise. Sans eux, elle reste personnalisée, simplement sans l'Ascendant ni les maisons astrologiques.</p>
+      <p>Cet avant-goût part uniquement de ton fonctionnement de fond, ce qui ne change pas d'un jour à l'autre.</p>
+      <p>L'abonnement va plus loin. Chaque jour, ta lecture croise ce fonctionnement avec le ciel du jour et avec ton jour personnel. Elle se renouvelle avec toi, jour après jour. Tu peux aussi poser une question sur ce que tu vis, en lien avec ta lecture du jour, une question gratuite chaque jour.</p>
+    </div>
+
+    <div class="prix-bloc">
+      <div class="prix">7,90 € / mois</div>
+      <div class="prix-cond">Sans engagement. Résiliable à tout moment.</div>
+      <a class="btn-acheter oracle-carte" href="https://lerepere.ludmillaenergie.fr/" target="_blank" rel="noopener">Découvrir mon avant-goût gratuit</a>
+      <div class="prix-detail">Une question de suivi est incluse chaque jour. Au-delà, une question supplémentaire coûte 0,50 €, ou 4,50 € pour un pack de 10.</div>
+    </div>
+
+    <p style="text-align:center;font-size:13px;letter-spacing:0.3px;line-height:2.2;color:#cfc3ab;opacity:0.9;margin:50px 0 0;">
+    <a href="conditions-generales.html" style="color:#cfc3ab;text-decoration:none;border-bottom:1px dotted rgba(200,169,110,0.4);margin:0 8px;white-space:nowrap;">Conditions générales</a>
+    <a href="confidentialite.html" style="color:#cfc3ab;text-decoration:none;border-bottom:1px dotted rgba(200,169,110,0.4);margin:0 8px;white-space:nowrap;">Confidentialité</a>
+    <a href="remboursement.html" style="color:#cfc3ab;text-decoration:none;border-bottom:1px dotted rgba(200,169,110,0.4);margin:0 8px;white-space:nowrap;">Remboursement</a>
+    <a href="accessibilite.html" style="color:#cfc3ab;text-decoration:none;border-bottom:1px dotted rgba(200,169,110,0.4);margin:0 8px;white-space:nowrap;">Accessibilité</a>
+  </p>
+
+  <footer>Ludmilla Énergie</footer>
+  </div>
+<script src="/phare-consentement.js" defer></script>
+</body>
+</html>

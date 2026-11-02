@@ -28,11 +28,13 @@
   var INACTIVITE_MS = 30 * 60 * 1000;          // nouvelle session après 30 min d'inactivité
   var SESSION_ABSOLUE_MS = 4 * 60 * 60 * 1000; // durée max d'une session continue
 
-  // Association href -> code d'offre pour le suivi des clics sur la page
-  // d'accueil. Recherche par sous-chaîne : peu importe le chemin exact
-  // (relatif ou absolu), tant que le fragment reconnaissable est présent.
+  // Association href -> code d'offre pour le suivi des clics sur les cartes
+  // et boutons d'offre. Recherche par sous-chaîne : peu importe le chemin
+  // exact (relatif ou absolu), tant que le fragment reconnaissable est
+  // présent. Le Repère est reconnu à son domaine, et non plus à un fragment
+  // #le-repere-partage que les liens réels ne portaient pas.
   var OFFRES_PAR_HREF = [
-    ['le-repere-partage', 'repere'],
+    ['lerepere.ludmillaenergie.fr', 'repere'],
     ['oracle-traversee.html', 'traversee'],
     ['oracle-evidences.html', 'evidences'],
     ['oracle-hemera.html', 'hemera'],
